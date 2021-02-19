@@ -13,7 +13,7 @@ package iupim
 #include <iupim.h>
 */
 import "C"
-import "github.com/visualfc/go-iup/iup"
+import "github.com/yofu/go-iup/iup"
 
 func LoadImage(filename string) *iup.Handle {
 	cname := iup.NewCS(filename)

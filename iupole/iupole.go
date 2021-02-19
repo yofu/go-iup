@@ -13,7 +13,7 @@ package iupole
 #include <iupole.h>
 */
 import "C"
-import "github.com/visualfc/go-iup/iup"
+import "github.com/yofu/go-iup/iup"
 
 func Open() *iup.Error {
 	r := C.IupOleControlOpen()

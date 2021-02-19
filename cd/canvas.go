@@ -15,7 +15,7 @@ package cd
 */
 import "C"
 import "unsafe"
-import "github.com/visualfc/go-iup/iup"
+import "github.com/yofu/go-iup/iup"
 
 type Canvas struct {
     p     *C.cdCanvas

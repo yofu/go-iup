@@ -15,7 +15,7 @@ package iuppplot
 */
 import "C"
 import "unsafe"
-import "github.com/visualfc/go-iup/iup"
+import "github.com/yofu/go-iup/iup"
 
 func toNative(h iup.IHandle) *C.Ihandle {
 	return (*C.Ihandle)(unsafe.Pointer(h.Native()))

@@ -17,7 +17,7 @@ package cd
 import "C"
 import "fmt"
 import "unsafe"
-import "github.com/visualfc/go-iup/iup"
+import "github.com/yofu/go-iup/iup"
 
 const CD_QUERY = -1
 

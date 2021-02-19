@@ -1,4 +1,4 @@
-#line 7 "C:\\Users\\fukushima\\golang\\src\\github.com\\visualfc\\go-iup\\cd\\cd.go"
+#line 7 "C:\\Users\\fukushima\\golang\\src\\github.com\\yofu\\go-iup\\cd\\cd.go"
 
 
 

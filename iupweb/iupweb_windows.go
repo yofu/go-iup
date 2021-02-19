@@ -5,7 +5,7 @@
 package iupweb
 
 import (
-	"github.com/visualfc/go-iup/iup"
+	"github.com/yofu/go-iup/iup"
 	"syscall"
 )
 
