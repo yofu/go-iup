@@ -773,6 +773,8 @@ const (
 	NORMALIZER   = "normalizer"
 	CBOX         = "cbox"
 	SBOX         = "sbox"
+	SCROLLBOX    = "scrollbox"
+	BACKGROUNDBOX= "backgroundbox"
 	SPLIT        = "split"
 	ITEM         = "item"
 	MENU         = "menu"
@@ -819,6 +821,8 @@ func RegisterAllClass() {
 	RegisterClass("normalizer", NewClassInfo("normalizer", normalizer_SetCallback))
 	RegisterClass("cbox", NewClassInfo("cbox", cbox_SetCallback))
 	RegisterClass("sbox", NewClassInfo("sbox", sbox_SetCallback))
+	RegisterClass("scrollbox", NewClassInfo("scrollbox", scrollbox_SetCallback))
+	RegisterClass("backgroundbox", NewClassInfo("backgroundbox", backgroundbox_SetCallback))
 	RegisterClass("split", NewClassInfo("split", split_SetCallback))
 	RegisterClass("item", NewClassInfo("item", item_SetCallback))
 	RegisterClass("menu", NewClassInfo("menu", menu_SetCallback))
@@ -968,6 +972,20 @@ func Cbox(a ...interface{}) *Handle {
 // 
 func Sbox(a ...interface{}) *Handle {
 	return New(SBOX, a...)
+}
+
+// Iup control ScrollBox
+//
+// 
+func ScrollBox(a ...interface{}) *Handle {
+	return New(SCROLLBOX, a...)
+}
+
+// Iup control BackgroundBox
+//
+// 
+func BackgroundBox(a ...interface{}) *Handle {
+	return New(BACKGROUNDBOX, a...)
 }
 
 // Iup control Split
@@ -1719,99 +1737,99 @@ func TuioClient(a ...interface{}) *Handle {
 // Iup callback IUP_DEFAULT_ACTION
 type CommonDefaultAction struct {
 	Sender *Handle
-	Return int
+	Return int32
 }
 
 // Iup callback IUP_MAP_CB
 type CommonMap struct {
 	Sender *Handle
-	Return int
+	Return int32
 }
 
 // Iup callback IUP_UNMAP_CB
 type CommonUnmap struct {
 	Sender *Handle
-	Return int
+	Return int32
 }
 
 // Iup callback IUP_DESTROY_CB
 type CommonDestroy struct {
 	Sender *Handle
-	Return int
+	Return int32
 }
 
 // Iup callback IUP_GETFOCUS_CB
 type CommonGetFocus struct {
 	Sender *Handle
-	Return int
+	Return int32
 }
 
 // Iup callback IUP_KILLFOCUS_CB
 type CommonKillFocus struct {
 	Sender *Handle
-	Return int
+	Return int32
 }
 
 // Iup callback IUP_ENTERWINDOW_CB
 type CommonEnterWindow struct {
 	Sender *Handle
-	Return int
+	Return int32
 }
 
 // Iup callback IUP_LEAVEWINDOW_CB
 type CommonLeaveWindow struct {
 	Sender *Handle
-	Return int
+	Return int32
 }
 
 // Iup callback IUP_HELP_CB
 type CommonHelp struct {
 	Sender *Handle
-	Return int
+	Return int32
 }
 
 // Iup callback IUP_K_ANY
 type CommonKeyAny struct {
 	Sender *Handle
-	Return int
-	Key    int
+	Return int32
+	Key    int32
 }
 
 // Iup callback IUP_CLOSE_CB
 type DialogClose struct {
 	Sender *Handle
-	Return int
+	Return int32
 }
 
 // Iup callback IUP_RESIZE_CB
 type DialogResize struct {
 	Sender *Handle
-	Return int
-	Width  int
-	Height int
+	Return int32
+	Width  int32
+	Height int32
 }
 
 // Iup callback IUP_DROPFILES_CB
 type DialogDropFiles struct {
 	Sender   *Handle
-	Return   int
+	Return   int32
 	FileName string
-	Num      int
-	X        int
-	Y        int
+	Num      int32
+	X        int32
+	Y        int32
 }
 
 // Iup callback IUP_SHOW_CB
 type DialogShow struct {
 	Sender *Handle
-	Return int
-	State  int
+	Return int32
+	State  int32
 }
 
 // Iup callback IUP_FILE_CB
 type FileDlgFile struct {
 	Sender   *Handle
-	Return   int
+	Return   int32
 	FileName string
 	Status   string
 }
@@ -1819,109 +1837,109 @@ type FileDlgFile struct {
 // Iup callback IUP_ACTION
 type ItemAction struct {
 	Sender *Handle
-	Return int
+	Return int32
 }
 
 // Iup callback IUP_HIGHLIGHT_CB
 type ItemHighlight struct {
 	Sender *Handle
-	Return int
+	Return int32
 }
 
 // Iup callback IUP_OPEN_CB
 type MenuOpen struct {
 	Sender *Handle
-	Return int
+	Return int32
 }
 
 // Iup callback IUP_MENUCLOSE_CB
 type MenuClose struct {
 	Sender *Handle
-	Return int
+	Return int32
 }
 
 // Iup callback IUP_HIGHLIGHT_CB
 type SubMenuHighlight struct {
 	Sender *Handle
-	Return int
+	Return int32
 }
 
 // Iup callback IUP_ACTION
 type TimerAction struct {
 	Sender *Handle
-	Return int
+	Return int32
 }
 
 // Iup callback IUP_ACTION
 type ButtonAction struct {
 	Sender *Handle
-	Return int
+	Return int32
 }
 
 // Iup callback IUP_BUTTON_CB
 type MouseButton struct {
 	Sender  *Handle
-	Return  int
-	Button  int
-	Pressed int
-	X       int
-	Y       int
+	Return  int32
+	Button  int32
+	Pressed int32
+	X       int32
+	Y       int32
 	Status  string
 }
 
 // Iup callback IUP_ACTION
 type CanvasAction struct {
 	Sender *Handle
-	Return int
+	Return int32
 }
 
 // Iup callback IUP_DROPFILES_CB
 type CanvasDropFiles struct {
 	Sender   *Handle
-	Return   int
+	Return   int32
 	FileName string
-	Num      int
-	X        int
-	Y        int
+	Num      int32
+	X        int32
+	Y        int32
 }
 
 // Iup callback IUP_FOCUS_CB
 type CanvasFocus struct {
 	Sender *Handle
-	Return int
-	Focus  int
+	Return int32
+	Focus  int32
 }
 
 // Iup callback IUP_MOTION_CB
 type MouseMotion struct {
 	Sender *Handle
-	Return int
-	X      int
-	Y      int
+	Return int32
+	X      int32
+	Y      int32
 	Status string
 }
 
 // Iup callback IUP_KEYPRESS_CB
 type CanvasKeyPress struct {
 	Sender *Handle
-	Return int
-	C      int
-	Press  int
+	Return int32
+	C      int32
+	Press  int32
 }
 
 // Iup callback IUP_RESIZE_CB
 type CanvasResize struct {
 	Sender *Handle
-	Return int
-	Width  int
-	Height int
+	Return int32
+	Width  int32
+	Height int32
 }
 
 // Iup callback IUP_SCROLL_CB
 type CanvasScroll struct {
 	Sender *Handle
-	Return int
-	Op     int
+	Return int32
+	Op     int32
 	PosX   float32
 	PosY   float32
 }
@@ -1929,132 +1947,132 @@ type CanvasScroll struct {
 // Iup callback IUP_TOUCH_CB
 type TouchEvent struct {
 	Sender *Handle
-	Return int
-	X      int
-	Y      int
+	Return int32
+	X      int32
+	Y      int32
 	State  string
 }
 
 // Iup callback IUP_MULTITOUCH_CB
 type MultiTouchEvent struct {
 	Sender *Handle
-	Return int
-	Count  int
-	Pid    *int
-	Px     *int
-	Py     *int
-	PState *int
+	Return int32
+	Count  int32
+	Pid    *int32
+	Px     *int32
+	Py     *int32
+	PState *int32
 }
 
 // Iup callback IUP_WHEEL_CB
 type CanvasWheel struct {
 	Sender *Handle
-	Return int
+	Return int32
 	Delta  float32
-	X      int
-	Y      int
+	X      int32
+	Y      int32
 	Status string
 }
 
 // Iup callback IUP_WOM_CB
 type CanvasWom struct {
 	Sender *Handle
-	Return int
-	State  int
+	Return int32
+	State  int32
 }
 
 // Iup callback IUP_DROPFILES_CB
 type LabelDropFiles struct {
 	Sender   *Handle
-	Return   int
+	Return   int32
 	FileName string
-	Num      int
-	X        int
-	Y        int
+	Num      int32
+	X        int32
+	Y        int32
 }
 
 // Iup callback IUP_ACTION
 type ListAction struct {
 	Sender *Handle
-	Return int
+	Return int32
 	Text   string
-	Item   int
-	State  int
+	Item   int32
+	State  int32
 }
 
 // Iup callback IUP_CARET_CB
 type ListCaret struct {
 	Sender *Handle
-	Return int
-	Lin    int
-	Col    int
-	Pos    int
+	Return int32
+	Lin    int32
+	Col    int32
+	Pos    int32
 }
 
 // Iup callback IUP_DBLCLICK_CB
 type ListDblclick struct {
 	Sender *Handle
-	Return int
-	Item   int
+	Return int32
+	Item   int32
 	Text   string
 }
 
 // Iup callback IUP_DROPDOWN_CB
 type ListDropDown struct {
 	Sender *Handle
-	Return int
-	State  int
+	Return int32
+	State  int32
 }
 
 // Iup callback IUP_DROPFILES_CB
 type ListDropFiles struct {
 	Sender   *Handle
-	Return   int
+	Return   int32
 	FileName string
-	Num      int
-	X        int
-	Y        int
+	Num      int32
+	X        int32
+	Y        int32
 }
 
 // Iup callback IUP_EDIT_CB
 type ListEdit struct {
 	Sender   *Handle
-	Return   int
-	C        int
+	Return   int32
+	C        int32
 	NewValue string
 }
 
 // Iup callback IUP_MULTISELECT_CB
 type ListMultiSelect struct {
 	Sender *Handle
-	Return int
+	Return int32
 	Value  string
 }
 
 // Iup callback IUP_VALUECHANGED_CB
 type ValueChanged struct {
 	Sender *Handle
-	Return int
+	Return int32
 }
 
 // Iup callback IUP_SPIN_CB
 type SpinInc struct {
 	Sender *Handle
-	Return int
-	Inc    int
+	Return int32
+	Inc    int32
 }
 
 // Iup callback IUP_SPIN_CB
 type SpinBoxInc struct {
 	Sender *Handle
-	Return int
-	Inc    int
+	Return int32
+	Inc    int32
 }
 
 // Iup callback IUP_TABCHANGE_CB
 type TabsChange struct {
 	Sender *Handle
-	Return int
+	Return int32
 	NewTab *Handle
 	OldTab *Handle
 }
@@ -2062,259 +2080,259 @@ type TabsChange struct {
 // Iup callback IUP_TABCHANGEPOS_CB
 type TabsChangePos struct {
 	Sender *Handle
-	Return int
-	NewPos int
-	OldPos int
+	Return int32
+	NewPos int32
+	OldPos int32
 }
 
 // Iup callback IUP_ACTION
 type TextAction struct {
 	Sender   *Handle
-	Return   int
-	C        int
+	Return   int32
+	C        int32
 	NewValue string
 }
 
 // Iup callback IUP_CARET_CB
 type TextCaret struct {
 	Sender *Handle
-	Return int
-	Lin    int
-	Col    int
-	Pos    int
+	Return int32
+	Lin    int32
+	Col    int32
+	Pos    int32
 }
 
 // Iup callback IUP_DROPFILES_CB
 type TextDropFiles struct {
 	Sender   *Handle
-	Return   int
+	Return   int32
 	FileName string
-	Num      int
-	X        int
-	Y        int
+	Num      int32
+	X        int32
+	Y        int32
 }
 
 // Iup callback IUP_SPIN_CB
 type TextSpin struct {
 	Sender *Handle
-	Return int
-	Inc    int
+	Return int32
+	Inc    int32
 }
 
 // Iup callback IUP_ACTION
 type ToggleAction struct {
 	Sender *Handle
-	Return int
-	State  int
+	Return int32
+	State  int32
 }
 
 // Iup callback IUP_SELECTION_CB
 type TreeSelection struct {
 	Sender *Handle
-	Return int
-	Id     int
-	Status int
+	Return int32
+	Id     int32
+	Status int32
 }
 
 // Iup callback IUP_MULTISELECTION_CB
 type TreeMultiSelection struct {
 	Sender *Handle
-	Return int
-	Ids    *int
-	N      int
+	Return int32
+	Ids    *int32
+	N      int32
 }
 
 // Iup callback IUP_BRANCHOPEN_CB
 type TreeBranchOpen struct {
 	Sender *Handle
-	Return int
-	Id     int
+	Return int32
+	Id     int32
 }
 
 // Iup callback IUP_BRANCHCLOSE_CB
 type TreeBranchClose struct {
 	Sender *Handle
-	Return int
-	Id     int
+	Return int32
+	Id     int32
 }
 
 // Iup callback IUP_EXECUTELEAF_CB
 type TreeExecuteLeaf struct {
 	Sender *Handle
-	Return int
-	Id     int
+	Return int32
+	Id     int32
 }
 
 // Iup callback IUP_SHOWRENAME_CB
 type TreeShowRename struct {
 	Sender *Handle
-	Return int
-	Id     int
+	Return int32
+	Id     int32
 }
 
 // Iup callback IUP_RENAME_CB
 type TreeRename struct {
 	Sender *Handle
-	Return int
-	Id     int
+	Return int32
+	Id     int32
 	Title  string
 }
 
 // Iup callback IUP_DRAGDROP_CB
 type TreeDragDrop struct {
 	Sender    *Handle
-	Return    int
-	DragId    int
-	DropId    int
-	IsShift   int
-	IsControl int
+	Return    int32
+	DragId    int32
+	DropId    int32
+	IsShift   int32
+	IsControl int32
 }
 
 // Iup callback IUP_NODEREMOVED_CB
 type TreeNodeRemoved struct {
 	Sender   *Handle
-	Return   int
+	Return   int32
 	UserData unsafe.Pointer
 }
 
 // Iup callback IUP_RIGHTCLICK_CB
 type TreeRightClick struct {
 	Sender *Handle
-	Return int
-	Id     int
+	Return int32
+	Id     int32
 }
 
 // Iup callback IUP_DROPFILES_CB
 type TreeDropFiles struct {
 	Sender   *Handle
-	Return   int
+	Return   int32
 	FileName string
-	Num      int
-	X        int
-	Y        int
+	Num      int32
+	X        int32
+	Y        int32
 }
 
 // Iup callback IUP_DRAW_CB
 type CellsDraw struct {
 	Sender *Handle
-	Return int
-	Line   int
-	Column int
-	Xmin   int
-	Xmax   int
-	Ymin   int
-	Ymax   int
+	Return int32
+	Line   int32
+	Column int32
+	Xmin   int32
+	Xmax   int32
+	Ymin   int32
+	Ymax   int32
 	Cnv    unsafe.Pointer
 }
 
 // Iup callback IUP_HEIGHT_CB
 type CellsHeight struct {
 	Sender *Handle
-	Return int
-	Line   int
+	Return int32
+	Line   int32
 }
 
 // Iup callback IUP_HSPAN_CB
 type CellsHspan struct {
 	Sender *Handle
-	Return int
-	Line   int
-	Column int
+	Return int32
+	Line   int32
+	Column int32
 }
 
 // Iup callback IUP_MOUSECLICK_CB
 type CellsMouseClick struct {
 	Sender  *Handle
-	Return  int
-	Button  int
-	Pressed int
-	Line    int
-	Column  int
-	X       int
-	Y       int
+	Return  int32
+	Button  int32
+	Pressed int32
+	Line    int32
+	Column  int32
+	X       int32
+	Y       int32
 	Status  string
 }
 
 // Iup callback IUP_MOUSEMOTION_CB
 type CellsMouseMotion struct {
 	Sender *Handle
-	Return int
-	Line   int
-	Column int
-	X      int
-	Y      int
+	Return int32
+	Line   int32
+	Column int32
+	X      int32
+	Y      int32
 	R      string
 }
 
 // Iup callback IUP_NCOLS_CB
 type CellsNcols struct {
 	Sender *Handle
-	Return int
+	Return int32
 }
 
 // Iup callback IUP_NLINES_CB
 type CellsNlines struct {
 	Sender *Handle
-	Return int
+	Return int32
 }
 
 // Iup callback IUP_SCROLLING_CB
 type CellsScrolling struct {
 	Sender *Handle
-	Return int
-	Line   int
-	Column int
+	Return int32
+	Line   int32
+	Column int32
 }
 
 // Iup callback IUP_VSPAN_CB
 type CellsVspan struct {
 	Sender *Handle
-	Return int
-	Line   int
-	Column int
+	Return int32
+	Line   int32
+	Column int32
 }
 
 // Iup callback IUP_WIDTH_CB
 type CellsWidth struct {
 	Sender *Handle
-	Return int
-	Column int
+	Return int32
+	Column int32
 }
 
 // Iup callback IUP_CELL_CB
 type ColorbarCell struct {
 	Sender *Handle
 	Return string
-	Cell   int
+	Cell   int32
 }
 
 // Iup callback IUP_EXTENDED_CB
 type ColorbarExtended struct {
 	Sender *Handle
-	Return int
-	Cell   int
+	Return int32
+	Cell   int32
 }
 
 // Iup callback IUP_SELECT_CB
 type ColorbarSelect struct {
 	Sender *Handle
-	Return int
-	Cell   int
-	Type   int
+	Return int32
+	Cell   int32
+	Type   int32
 }
 
 // Iup callback IUP_SWITCH_CB
 type ColorbarSwitch struct {
 	Sender   *Handle
-	Return   int
-	PrimCell int
-	SecCell  int
+	Return   int32
+	PrimCell int32
+	SecCell  int32
 }
 
 // Iup callback IUP_CHANGE_CB
 type ColorBrowserChange struct {
 	Sender *Handle
-	Return int
+	Return int32
 	R      byte
 	G      byte
 	B      byte
@@ -2323,7 +2341,7 @@ type ColorBrowserChange struct {
 // Iup callback IUP_DRAG_CB
 type ColorBrowserDrag struct {
 	Sender *Handle
-	Return int
+	Return int32
 	R      byte
 	G      byte
 	B      byte
@@ -2332,91 +2350,91 @@ type ColorBrowserDrag struct {
 // Iup callback IUP_BUTTON_PRESS_CB
 type DialButtonPress struct {
 	Sender *Handle
-	Return int
+	Return int32
 	Angle  float64
 }
 
 // Iup callback IUP_BUTTON_RELEASE_CB
 type DialButtonRelease struct {
 	Sender *Handle
-	Return int
+	Return int32
 	Angle  float64
 }
 
 // Iup callback IUP_MOUSEMOVE_CB
 type DialMouseMove struct {
 	Sender *Handle
-	Return int
+	Return int32
 	Angle  float64
 }
 
 // Iup callback IUP_ACTION_CB
 type MatrixAction struct {
 	Sender  *Handle
-	Return  int
-	Key     int
-	Lin     int
-	Col     int
-	Edition int
+	Return  int32
+	Key     int32
+	Lin     int32
+	Col     int32
+	Edition int32
 	Value   string
 }
 
 // Iup callback IUP_CLICK_CB
 type MatrixClick struct {
 	Sender *Handle
-	Return int
-	Lin    int
-	Col    int
+	Return int32
+	Lin    int32
+	Col    int32
 	Status string
 }
 
 // Iup callback IUP_RELEASE_CB
 type MatrixRelease struct {
 	Sender *Handle
-	Return int
-	Lin    int
-	Col    int
+	Return int32
+	Lin    int32
+	Col    int32
 	Status string
 }
 
 // Iup callback IUP_MOUSEMOVE_CB
 type MatrixMouseMove struct {
 	Sender *Handle
-	Return int
-	Lin    int
-	Col    int
+	Return int32
+	Lin    int32
+	Col    int32
 }
 
 // Iup callback IUP_ENTERITEM_CB
 type MatrixEnterItem struct {
 	Sender *Handle
-	Return int
-	Lin    int
-	Col    int
+	Return int32
+	Lin    int32
+	Col    int32
 }
 
 // Iup callback IUP_LEAVEITEM_CB
 type MatrixLeaveItem struct {
 	Sender *Handle
-	Return int
-	Lin    int
-	Col    int
+	Return int32
+	Lin    int32
+	Col    int32
 }
 
 // Iup callback IUP_SCROLLTOP_CB
 type MatrixScrollTop struct {
 	Sender *Handle
-	Return int
-	Lin    int
-	Col    int
+	Return int32
+	Lin    int32
+	Col    int32
 }
 
 // Iup callback IUP_BGCOLOR_CB
 type MatrixBgcolor struct {
 	Sender *Handle
-	Return int
-	Lin    int
-	Col    int
+	Return int32
+	Lin    int32
+	Col    int32
 	Red    *uint
 	Green  *uint
 	Blue   *uint
@@ -2425,9 +2443,9 @@ type MatrixBgcolor struct {
 // Iup callback IUP_FGCOLOR_CB
 type MatrixFgcolor struct {
 	Sender *Handle
-	Return int
-	Lin    int
-	Col    int
+	Return int32
+	Lin    int32
+	Col    int32
 	Red    *uint
 	Green  *uint
 	Blue   *uint
@@ -2436,102 +2454,102 @@ type MatrixFgcolor struct {
 // Iup callback IUP_FONT_CB
 type MatrixFont struct {
 	Sender *Handle
-	Return int
-	Lin    int
-	Col    int
+	Return int32
+	Lin    int32
+	Col    int32
 }
 
 // Iup callback IUP_DRAW_CB
 type MatrixDraw struct {
 	Sender *Handle
-	Return int
-	Lin    int
-	Col    int
-	X1     int
-	X2     int
-	Y1     int
-	Y2     int
+	Return int32
+	Lin    int32
+	Col    int32
+	X1     int32
+	X2     int32
+	Y1     int32
+	Y2     int32
 	Cnv    unsafe.Pointer
 }
 
 // Iup callback IUP_DROPCHECK_CB
 type MatrixDropCheck struct {
 	Sender *Handle
-	Return int
-	Lin    int
-	Col    int
+	Return int32
+	Lin    int32
+	Col    int32
 }
 
 // Iup callback IUP_DROP_CB
 type MatrixDrop struct {
 	Sender *Handle
-	Return int
-	Lin    int
-	Col    int
+	Return int32
+	Lin    int32
+	Col    int32
 }
 
 // Iup callback IUP_DROPSELECT_CB
 type MatrixDropSelect struct {
 	Sender *Handle
-	Return int
-	Lin    int
-	Col    int
+	Return int32
+	Lin    int32
+	Col    int32
 	Drop   *Handle
 	T      string
-	I      int
-	V      int
+	I      int32
+	V      int32
 }
 
 // Iup callback IUP_EDITION_CB
 type MatrixEdition struct {
 	Sender *Handle
-	Return int
-	Lin    int
-	Col    int
-	Mode   int
-	Update int
+	Return int32
+	Lin    int32
+	Col    int32
+	Mode   int32
+	Update int32
 }
 
 // Iup callback IUP_VALUE_CB
 type MatrixValue struct {
 	Sender *Handle
-	Return int
-	Lin    int
-	Col    int
+	Return int32
+	Lin    int32
+	Col    int32
 }
 
 // Iup callback IUP_VALUE_EDIT_CB
 type MatrixValueEdit struct {
 	Sender   *Handle
-	Return   int
-	Lin      int
-	Col      int
+	Return   int32
+	Lin      int32
+	Col      int32
 	NewValue string
 }
 
 // Iup callback IUP_MARK_CB
 type MatrixMark struct {
 	Sender *Handle
-	Return int
-	Lin    int
-	Col    int
+	Return int32
+	Lin    int32
+	Col    int32
 }
 
 // Iup callback IUP_MARKEDIT_CB
 type MatrixMarkEdit struct {
 	Sender *Handle
-	Return int
-	Lin    int
-	Col    int
-	Marked int
+	Return int32
+	Lin    int32
+	Col    int32
+	Marked int32
 }
 
 // Iup callback IUP_DELETE_CB
 type PPlotDelete struct {
 	Sender      *Handle
-	Return      int
-	Index       int
-	SampleIndex int
+	Return      int32
+	Index       int32
+	SampleIndex int32
 	X           float32
 	Y           float32
 }
@@ -2539,44 +2557,44 @@ type PPlotDelete struct {
 // Iup callback IUP_DELETEBEGIN_CB
 type PPlotDeleteBegin struct {
 	Sender *Handle
-	Return int
+	Return int32
 }
 
 // Iup callback IUP_DELETEEND_CB
 type PPlotDeleteEnd struct {
 	Sender *Handle
-	Return int
+	Return int32
 }
 
 // Iup callback IUP_SELECT_CB
 type PPlotSelect struct {
 	Sender      *Handle
-	Return      int
-	Index       int
-	SampleIndex int
+	Return      int32
+	Index       int32
+	SampleIndex int32
 	X           float32
 	Y           float32
-	Select      int
+	Select      int32
 }
 
 // Iup callback IUP_SELECTBEGIN_CB
 type PPlotSelectBegin struct {
 	Sender *Handle
-	Return int
+	Return int32
 }
 
 // Iup callback IUP_SELECTEND_CB
 type PPlotSelectEnd struct {
 	Sender *Handle
-	Return int
+	Return int32
 }
 
 // Iup callback IUP_EDIT_CB
 type PPlotEdit struct {
 	Sender      *Handle
-	Return      int
-	Index       int
-	SampleIndex int
+	Return      int32
+	Index       int32
+	SampleIndex int32
 	X           float32
 	Y           float32
 	NewX        *float32
@@ -2586,54 +2604,54 @@ type PPlotEdit struct {
 // Iup callback IUP_EDITBEGIN_CB
 type PPlotEditBegin struct {
 	Sender *Handle
-	Return int
+	Return int32
 }
 
 // Iup callback IUP_EDITEND_CB
 type PPlotEditEnd struct {
 	Sender *Handle
-	Return int
+	Return int32
 }
 
 // Iup callback IUP_PREDRAW_CB
 type PPlotPreDraw struct {
 	Sender *Handle
-	Return int
+	Return int32
 	Canvas unsafe.Pointer
 }
 
 // Iup callback IUP_POSTDRAW_CB
 type PPlotPostDraw struct {
 	Sender *Handle
-	Return int
+	Return int32
 	Canvas unsafe.Pointer
 }
 
 // Iup callback IUP_COMPLETED_CB
 type WebBrowserCompleted struct {
 	Sender *Handle
-	Return int
+	Return int32
 	Url    string
 }
 
 // Iup callback IUP_ERROR_CB
 type WebBrowserError struct {
 	Sender *Handle
-	Return int
+	Return int32
 	Url    string
 }
 
 // Iup callback IUP_NAVIGATE_CB
 type WebBrowserNavigate struct {
 	Sender *Handle
-	Return int
+	Return int32
 	Url    string
 }
 
 // Iup callback IUP_NEWWINDOW_CB
 type WebBrowserNewWindow struct {
 	Sender *Handle
-	Return int
+	Return int32
 	Url    string
 }
 
@@ -2771,6 +2789,14 @@ func cbox_SetCallback(h *Handle, fn interface{}) bool {
 }
 
 func sbox_SetCallback(h *Handle, fn interface{}) bool {
+	return false
+}
+
+func scrollbox_SetCallback(h *Handle, fn interface{}) bool {
+	return false
+}
+
+func backgroundbox_SetCallback(h *Handle, fn interface{}) bool {
 	return false
 }
 
@@ -3431,7 +3457,7 @@ func tuioclient_SetCallback(h *Handle, fn interface{}) bool {
 }
 
 //export goCommonDefaultAction
-func goCommonDefaultAction(p unsafe.Pointer) int {
+func goCommonDefaultAction(p unsafe.Pointer) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -3449,7 +3475,7 @@ func goCommonDefaultAction(p unsafe.Pointer) int {
 }
 
 //export goCommonMap
-func goCommonMap(p unsafe.Pointer) int {
+func goCommonMap(p unsafe.Pointer) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -3467,7 +3493,7 @@ func goCommonMap(p unsafe.Pointer) int {
 }
 
 //export goCommonUnmap
-func goCommonUnmap(p unsafe.Pointer) int {
+func goCommonUnmap(p unsafe.Pointer) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -3485,7 +3511,7 @@ func goCommonUnmap(p unsafe.Pointer) int {
 }
 
 //export goCommonDestroy
-func goCommonDestroy(p unsafe.Pointer) int {
+func goCommonDestroy(p unsafe.Pointer) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -3503,7 +3529,7 @@ func goCommonDestroy(p unsafe.Pointer) int {
 }
 
 //export goCommonGetFocus
-func goCommonGetFocus(p unsafe.Pointer) int {
+func goCommonGetFocus(p unsafe.Pointer) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -3521,7 +3547,7 @@ func goCommonGetFocus(p unsafe.Pointer) int {
 }
 
 //export goCommonKillFocus
-func goCommonKillFocus(p unsafe.Pointer) int {
+func goCommonKillFocus(p unsafe.Pointer) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -3539,7 +3565,7 @@ func goCommonKillFocus(p unsafe.Pointer) int {
 }
 
 //export goCommonEnterWindow
-func goCommonEnterWindow(p unsafe.Pointer) int {
+func goCommonEnterWindow(p unsafe.Pointer) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -3557,7 +3583,7 @@ func goCommonEnterWindow(p unsafe.Pointer) int {
 }
 
 //export goCommonLeaveWindow
-func goCommonLeaveWindow(p unsafe.Pointer) int {
+func goCommonLeaveWindow(p unsafe.Pointer) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -3575,7 +3601,7 @@ func goCommonLeaveWindow(p unsafe.Pointer) int {
 }
 
 //export goCommonHelp
-func goCommonHelp(p unsafe.Pointer) int {
+func goCommonHelp(p unsafe.Pointer) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -3593,7 +3619,7 @@ func goCommonHelp(p unsafe.Pointer) int {
 }
 
 //export goCommonKeyAny
-func goCommonKeyAny(p unsafe.Pointer, N1 int) int {
+func goCommonKeyAny(p unsafe.Pointer, N1 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -3611,7 +3637,7 @@ func goCommonKeyAny(p unsafe.Pointer, N1 int) int {
 }
 
 //export goDialogClose
-func goDialogClose(p unsafe.Pointer) int {
+func goDialogClose(p unsafe.Pointer) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -3629,7 +3655,7 @@ func goDialogClose(p unsafe.Pointer) int {
 }
 
 //export goDialogResize
-func goDialogResize(p unsafe.Pointer, N1 int, N2 int) int {
+func goDialogResize(p unsafe.Pointer, N1 int32, N2 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -3647,7 +3673,7 @@ func goDialogResize(p unsafe.Pointer, N1 int, N2 int) int {
 }
 
 //export goDialogDropFiles
-func goDialogDropFiles(p unsafe.Pointer, N1 *C.char, N2 int, N3 int, N4 int) int {
+func goDialogDropFiles(p unsafe.Pointer, N1 *C.char, N2 int32, N3 int32, N4 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -3665,7 +3691,7 @@ func goDialogDropFiles(p unsafe.Pointer, N1 *C.char, N2 int, N3 int, N4 int) int
 }
 
 //export goDialogShow
-func goDialogShow(p unsafe.Pointer, N1 int) int {
+func goDialogShow(p unsafe.Pointer, N1 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -3683,7 +3709,7 @@ func goDialogShow(p unsafe.Pointer, N1 int) int {
 }
 
 //export goFileDlgFile
-func goFileDlgFile(p unsafe.Pointer, N1 *C.char, N2 *C.char) int {
+func goFileDlgFile(p unsafe.Pointer, N1 *C.char, N2 *C.char) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -3701,7 +3727,7 @@ func goFileDlgFile(p unsafe.Pointer, N1 *C.char, N2 *C.char) int {
 }
 
 //export goItemAction
-func goItemAction(p unsafe.Pointer) int {
+func goItemAction(p unsafe.Pointer) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -3719,7 +3745,7 @@ func goItemAction(p unsafe.Pointer) int {
 }
 
 //export goItemHighlight
-func goItemHighlight(p unsafe.Pointer) int {
+func goItemHighlight(p unsafe.Pointer) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -3737,7 +3763,7 @@ func goItemHighlight(p unsafe.Pointer) int {
 }
 
 //export goMenuOpen
-func goMenuOpen(p unsafe.Pointer) int {
+func goMenuOpen(p unsafe.Pointer) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -3755,7 +3781,7 @@ func goMenuOpen(p unsafe.Pointer) int {
 }
 
 //export goMenuClose
-func goMenuClose(p unsafe.Pointer) int {
+func goMenuClose(p unsafe.Pointer) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -3773,7 +3799,7 @@ func goMenuClose(p unsafe.Pointer) int {
 }
 
 //export goSubMenuHighlight
-func goSubMenuHighlight(p unsafe.Pointer) int {
+func goSubMenuHighlight(p unsafe.Pointer) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -3791,7 +3817,7 @@ func goSubMenuHighlight(p unsafe.Pointer) int {
 }
 
 //export goTimerAction
-func goTimerAction(p unsafe.Pointer) int {
+func goTimerAction(p unsafe.Pointer) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -3809,7 +3835,7 @@ func goTimerAction(p unsafe.Pointer) int {
 }
 
 //export goButtonAction
-func goButtonAction(p unsafe.Pointer) int {
+func goButtonAction(p unsafe.Pointer) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -3827,7 +3853,7 @@ func goButtonAction(p unsafe.Pointer) int {
 }
 
 //export goMouseButton
-func goMouseButton(p unsafe.Pointer, N1 int, N2 int, N3 int, N4 int, N5 *C.char) int {
+func goMouseButton(p unsafe.Pointer, N1 int32, N2 int32, N3 int32, N4 int32, N5 *C.char) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -3845,7 +3871,7 @@ func goMouseButton(p unsafe.Pointer, N1 int, N2 int, N3 int, N4 int, N5 *C.char)
 }
 
 //export goCanvasAction
-func goCanvasAction(p unsafe.Pointer) int {
+func goCanvasAction(p unsafe.Pointer) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -3863,7 +3889,7 @@ func goCanvasAction(p unsafe.Pointer) int {
 }
 
 //export goCanvasDropFiles
-func goCanvasDropFiles(p unsafe.Pointer, N1 *C.char, N2 int, N3 int, N4 int) int {
+func goCanvasDropFiles(p unsafe.Pointer, N1 *C.char, N2 int32, N3 int32, N4 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -3881,7 +3907,7 @@ func goCanvasDropFiles(p unsafe.Pointer, N1 *C.char, N2 int, N3 int, N4 int) int
 }
 
 //export goCanvasFocus
-func goCanvasFocus(p unsafe.Pointer, N1 int) int {
+func goCanvasFocus(p unsafe.Pointer, N1 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -3899,7 +3925,7 @@ func goCanvasFocus(p unsafe.Pointer, N1 int) int {
 }
 
 //export goMouseMotion
-func goMouseMotion(p unsafe.Pointer, N1 int, N2 int, N3 *C.char) int {
+func goMouseMotion(p unsafe.Pointer, N1 int32, N2 int32, N3 *C.char) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -3917,7 +3943,7 @@ func goMouseMotion(p unsafe.Pointer, N1 int, N2 int, N3 *C.char) int {
 }
 
 //export goCanvasKeyPress
-func goCanvasKeyPress(p unsafe.Pointer, N1 int, N2 int) int {
+func goCanvasKeyPress(p unsafe.Pointer, N1 int32, N2 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -3935,7 +3961,7 @@ func goCanvasKeyPress(p unsafe.Pointer, N1 int, N2 int) int {
 }
 
 //export goCanvasResize
-func goCanvasResize(p unsafe.Pointer, N1 int, N2 int) int {
+func goCanvasResize(p unsafe.Pointer, N1 int32, N2 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -3953,7 +3979,7 @@ func goCanvasResize(p unsafe.Pointer, N1 int, N2 int) int {
 }
 
 //export goCanvasScroll
-func goCanvasScroll(p unsafe.Pointer, N1 int, N2 float32, N3 float32) int {
+func goCanvasScroll(p unsafe.Pointer, N1 int32, N2 float32, N3 float32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -3971,7 +3997,7 @@ func goCanvasScroll(p unsafe.Pointer, N1 int, N2 float32, N3 float32) int {
 }
 
 //export goTouchEvent
-func goTouchEvent(p unsafe.Pointer, N1 int, N2 int, N3 *C.char) int {
+func goTouchEvent(p unsafe.Pointer, N1 int32, N2 int32, N3 *C.char) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -3989,7 +4015,7 @@ func goTouchEvent(p unsafe.Pointer, N1 int, N2 int, N3 *C.char) int {
 }
 
 //export goMultiTouchEvent
-func goMultiTouchEvent(p unsafe.Pointer, N1 int, N2 *int, N3 *int, N4 *int, N5 *int) int {
+func goMultiTouchEvent(p unsafe.Pointer, N1 int32, N2 *int32, N3 *int32, N4 *int32, N5 *int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4007,7 +4033,7 @@ func goMultiTouchEvent(p unsafe.Pointer, N1 int, N2 *int, N3 *int, N4 *int, N5 *
 }
 
 //export goCanvasWheel
-func goCanvasWheel(p unsafe.Pointer, N1 float32, N2 int, N3 int, N4 *C.char) int {
+func goCanvasWheel(p unsafe.Pointer, N1 float32, N2 int32, N3 int32, N4 *C.char) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4025,7 +4051,7 @@ func goCanvasWheel(p unsafe.Pointer, N1 float32, N2 int, N3 int, N4 *C.char) int
 }
 
 //export goCanvasWom
-func goCanvasWom(p unsafe.Pointer, N1 int) int {
+func goCanvasWom(p unsafe.Pointer, N1 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4043,7 +4069,7 @@ func goCanvasWom(p unsafe.Pointer, N1 int) int {
 }
 
 //export goLabelDropFiles
-func goLabelDropFiles(p unsafe.Pointer, N1 *C.char, N2 int, N3 int, N4 int) int {
+func goLabelDropFiles(p unsafe.Pointer, N1 *C.char, N2 int32, N3 int32, N4 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4061,7 +4087,7 @@ func goLabelDropFiles(p unsafe.Pointer, N1 *C.char, N2 int, N3 int, N4 int) int 
 }
 
 //export goListAction
-func goListAction(p unsafe.Pointer, N1 *C.char, N2 int, N3 int) int {
+func goListAction(p unsafe.Pointer, N1 *C.char, N2 int32, N3 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4079,7 +4105,7 @@ func goListAction(p unsafe.Pointer, N1 *C.char, N2 int, N3 int) int {
 }
 
 //export goListCaret
-func goListCaret(p unsafe.Pointer, N1 int, N2 int, N3 int) int {
+func goListCaret(p unsafe.Pointer, N1 int32, N2 int32, N3 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4097,7 +4123,7 @@ func goListCaret(p unsafe.Pointer, N1 int, N2 int, N3 int) int {
 }
 
 //export goListDblclick
-func goListDblclick(p unsafe.Pointer, N1 int, N2 *C.char) int {
+func goListDblclick(p unsafe.Pointer, N1 int32, N2 *C.char) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4115,7 +4141,7 @@ func goListDblclick(p unsafe.Pointer, N1 int, N2 *C.char) int {
 }
 
 //export goListDropDown
-func goListDropDown(p unsafe.Pointer, N1 int) int {
+func goListDropDown(p unsafe.Pointer, N1 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4133,7 +4159,7 @@ func goListDropDown(p unsafe.Pointer, N1 int) int {
 }
 
 //export goListDropFiles
-func goListDropFiles(p unsafe.Pointer, N1 *C.char, N2 int, N3 int, N4 int) int {
+func goListDropFiles(p unsafe.Pointer, N1 *C.char, N2 int32, N3 int32, N4 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4151,7 +4177,7 @@ func goListDropFiles(p unsafe.Pointer, N1 *C.char, N2 int, N3 int, N4 int) int {
 }
 
 //export goListEdit
-func goListEdit(p unsafe.Pointer, N1 int, N2 *C.char) int {
+func goListEdit(p unsafe.Pointer, N1 int32, N2 *C.char) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4169,7 +4195,7 @@ func goListEdit(p unsafe.Pointer, N1 int, N2 *C.char) int {
 }
 
 //export goListMultiSelect
-func goListMultiSelect(p unsafe.Pointer, N1 *C.char) int {
+func goListMultiSelect(p unsafe.Pointer, N1 *C.char) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4187,7 +4213,7 @@ func goListMultiSelect(p unsafe.Pointer, N1 *C.char) int {
 }
 
 //export goValueChanged
-func goValueChanged(p unsafe.Pointer) int {
+func goValueChanged(p unsafe.Pointer) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4205,7 +4231,7 @@ func goValueChanged(p unsafe.Pointer) int {
 }
 
 //export goSpinInc
-func goSpinInc(p unsafe.Pointer, N1 int) int {
+func goSpinInc(p unsafe.Pointer, N1 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4223,7 +4249,7 @@ func goSpinInc(p unsafe.Pointer, N1 int) int {
 }
 
 //export goSpinBoxInc
-func goSpinBoxInc(p unsafe.Pointer, N1 int) int {
+func goSpinBoxInc(p unsafe.Pointer, N1 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4241,7 +4267,7 @@ func goSpinBoxInc(p unsafe.Pointer, N1 int) int {
 }
 
 //export goTabsChange
-func goTabsChange(p unsafe.Pointer, N1 unsafe.Pointer, N2 unsafe.Pointer) int {
+func goTabsChange(p unsafe.Pointer, N1 unsafe.Pointer, N2 unsafe.Pointer) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4259,7 +4285,7 @@ func goTabsChange(p unsafe.Pointer, N1 unsafe.Pointer, N2 unsafe.Pointer) int {
 }
 
 //export goTabsChangePos
-func goTabsChangePos(p unsafe.Pointer, N1 int, N2 int) int {
+func goTabsChangePos(p unsafe.Pointer, N1 int32, N2 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4277,7 +4303,7 @@ func goTabsChangePos(p unsafe.Pointer, N1 int, N2 int) int {
 }
 
 //export goTextAction
-func goTextAction(p unsafe.Pointer, N1 int, N2 *C.char) int {
+func goTextAction(p unsafe.Pointer, N1 int32, N2 *C.char) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4295,7 +4321,7 @@ func goTextAction(p unsafe.Pointer, N1 int, N2 *C.char) int {
 }
 
 //export goTextCaret
-func goTextCaret(p unsafe.Pointer, N1 int, N2 int, N3 int) int {
+func goTextCaret(p unsafe.Pointer, N1 int32, N2 int32, N3 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4313,7 +4339,7 @@ func goTextCaret(p unsafe.Pointer, N1 int, N2 int, N3 int) int {
 }
 
 //export goTextDropFiles
-func goTextDropFiles(p unsafe.Pointer, N1 *C.char, N2 int, N3 int, N4 int) int {
+func goTextDropFiles(p unsafe.Pointer, N1 *C.char, N2 int32, N3 int32, N4 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4331,7 +4357,7 @@ func goTextDropFiles(p unsafe.Pointer, N1 *C.char, N2 int, N3 int, N4 int) int {
 }
 
 //export goTextSpin
-func goTextSpin(p unsafe.Pointer, N1 int) int {
+func goTextSpin(p unsafe.Pointer, N1 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4349,7 +4375,7 @@ func goTextSpin(p unsafe.Pointer, N1 int) int {
 }
 
 //export goToggleAction
-func goToggleAction(p unsafe.Pointer, N1 int) int {
+func goToggleAction(p unsafe.Pointer, N1 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4367,7 +4393,7 @@ func goToggleAction(p unsafe.Pointer, N1 int) int {
 }
 
 //export goTreeSelection
-func goTreeSelection(p unsafe.Pointer, N1 int, N2 int) int {
+func goTreeSelection(p unsafe.Pointer, N1 int32, N2 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4385,7 +4411,7 @@ func goTreeSelection(p unsafe.Pointer, N1 int, N2 int) int {
 }
 
 //export goTreeMultiSelection
-func goTreeMultiSelection(p unsafe.Pointer, N1 *int, N2 int) int {
+func goTreeMultiSelection(p unsafe.Pointer, N1 *int32, N2 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4403,7 +4429,7 @@ func goTreeMultiSelection(p unsafe.Pointer, N1 *int, N2 int) int {
 }
 
 //export goTreeBranchOpen
-func goTreeBranchOpen(p unsafe.Pointer, N1 int) int {
+func goTreeBranchOpen(p unsafe.Pointer, N1 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4421,7 +4447,7 @@ func goTreeBranchOpen(p unsafe.Pointer, N1 int) int {
 }
 
 //export goTreeBranchClose
-func goTreeBranchClose(p unsafe.Pointer, N1 int) int {
+func goTreeBranchClose(p unsafe.Pointer, N1 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4439,7 +4465,7 @@ func goTreeBranchClose(p unsafe.Pointer, N1 int) int {
 }
 
 //export goTreeExecuteLeaf
-func goTreeExecuteLeaf(p unsafe.Pointer, N1 int) int {
+func goTreeExecuteLeaf(p unsafe.Pointer, N1 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4457,7 +4483,7 @@ func goTreeExecuteLeaf(p unsafe.Pointer, N1 int) int {
 }
 
 //export goTreeShowRename
-func goTreeShowRename(p unsafe.Pointer, N1 int) int {
+func goTreeShowRename(p unsafe.Pointer, N1 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4475,7 +4501,7 @@ func goTreeShowRename(p unsafe.Pointer, N1 int) int {
 }
 
 //export goTreeRename
-func goTreeRename(p unsafe.Pointer, N1 int, N2 *C.char) int {
+func goTreeRename(p unsafe.Pointer, N1 int32, N2 *C.char) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4493,7 +4519,7 @@ func goTreeRename(p unsafe.Pointer, N1 int, N2 *C.char) int {
 }
 
 //export goTreeDragDrop
-func goTreeDragDrop(p unsafe.Pointer, N1 int, N2 int, N3 int, N4 int) int {
+func goTreeDragDrop(p unsafe.Pointer, N1 int32, N2 int32, N3 int32, N4 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4511,7 +4537,7 @@ func goTreeDragDrop(p unsafe.Pointer, N1 int, N2 int, N3 int, N4 int) int {
 }
 
 //export goTreeNodeRemoved
-func goTreeNodeRemoved(p unsafe.Pointer, N1 unsafe.Pointer) int {
+func goTreeNodeRemoved(p unsafe.Pointer, N1 unsafe.Pointer) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4529,7 +4555,7 @@ func goTreeNodeRemoved(p unsafe.Pointer, N1 unsafe.Pointer) int {
 }
 
 //export goTreeRightClick
-func goTreeRightClick(p unsafe.Pointer, N1 int) int {
+func goTreeRightClick(p unsafe.Pointer, N1 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4547,7 +4573,7 @@ func goTreeRightClick(p unsafe.Pointer, N1 int) int {
 }
 
 //export goTreeDropFiles
-func goTreeDropFiles(p unsafe.Pointer, N1 *C.char, N2 int, N3 int, N4 int) int {
+func goTreeDropFiles(p unsafe.Pointer, N1 *C.char, N2 int32, N3 int32, N4 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4565,7 +4591,7 @@ func goTreeDropFiles(p unsafe.Pointer, N1 *C.char, N2 int, N3 int, N4 int) int {
 }
 
 //export goCellsDraw
-func goCellsDraw(p unsafe.Pointer, N1 int, N2 int, N3 int, N4 int, N5 int, N6 int, N7 unsafe.Pointer) int {
+func goCellsDraw(p unsafe.Pointer, N1 int32, N2 int32, N3 int32, N4 int32, N5 int32, N6 int32, N7 unsafe.Pointer) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4583,7 +4609,7 @@ func goCellsDraw(p unsafe.Pointer, N1 int, N2 int, N3 int, N4 int, N5 int, N6 in
 }
 
 //export goCellsHeight
-func goCellsHeight(p unsafe.Pointer, N1 int) int {
+func goCellsHeight(p unsafe.Pointer, N1 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4601,7 +4627,7 @@ func goCellsHeight(p unsafe.Pointer, N1 int) int {
 }
 
 //export goCellsHspan
-func goCellsHspan(p unsafe.Pointer, N1 int, N2 int) int {
+func goCellsHspan(p unsafe.Pointer, N1 int32, N2 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4619,7 +4645,7 @@ func goCellsHspan(p unsafe.Pointer, N1 int, N2 int) int {
 }
 
 //export goCellsMouseClick
-func goCellsMouseClick(p unsafe.Pointer, N1 int, N2 int, N3 int, N4 int, N5 int, N6 int, N7 *C.char) int {
+func goCellsMouseClick(p unsafe.Pointer, N1 int32, N2 int32, N3 int32, N4 int32, N5 int32, N6 int32, N7 *C.char) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4637,7 +4663,7 @@ func goCellsMouseClick(p unsafe.Pointer, N1 int, N2 int, N3 int, N4 int, N5 int,
 }
 
 //export goCellsMouseMotion
-func goCellsMouseMotion(p unsafe.Pointer, N1 int, N2 int, N3 int, N4 int, N5 *C.char) int {
+func goCellsMouseMotion(p unsafe.Pointer, N1 int32, N2 int32, N3 int32, N4 int32, N5 *C.char) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4655,7 +4681,7 @@ func goCellsMouseMotion(p unsafe.Pointer, N1 int, N2 int, N3 int, N4 int, N5 *C.
 }
 
 //export goCellsNcols
-func goCellsNcols(p unsafe.Pointer) int {
+func goCellsNcols(p unsafe.Pointer) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4673,7 +4699,7 @@ func goCellsNcols(p unsafe.Pointer) int {
 }
 
 //export goCellsNlines
-func goCellsNlines(p unsafe.Pointer) int {
+func goCellsNlines(p unsafe.Pointer) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4691,7 +4717,7 @@ func goCellsNlines(p unsafe.Pointer) int {
 }
 
 //export goCellsScrolling
-func goCellsScrolling(p unsafe.Pointer, N1 int, N2 int) int {
+func goCellsScrolling(p unsafe.Pointer, N1 int32, N2 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4709,7 +4735,7 @@ func goCellsScrolling(p unsafe.Pointer, N1 int, N2 int) int {
 }
 
 //export goCellsVspan
-func goCellsVspan(p unsafe.Pointer, N1 int, N2 int) int {
+func goCellsVspan(p unsafe.Pointer, N1 int32, N2 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4727,7 +4753,7 @@ func goCellsVspan(p unsafe.Pointer, N1 int, N2 int) int {
 }
 
 //export goCellsWidth
-func goCellsWidth(p unsafe.Pointer, N1 int) int {
+func goCellsWidth(p unsafe.Pointer, N1 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4745,7 +4771,7 @@ func goCellsWidth(p unsafe.Pointer, N1 int) int {
 }
 
 //export goColorbarCell
-func goColorbarCell(p unsafe.Pointer, N1 int) *C.char {
+func goColorbarCell(p unsafe.Pointer, N1 int32) *C.char {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return nil
@@ -4767,7 +4793,7 @@ func goColorbarCell(p unsafe.Pointer, N1 int) *C.char {
 }
 
 //export goColorbarExtended
-func goColorbarExtended(p unsafe.Pointer, N1 int) int {
+func goColorbarExtended(p unsafe.Pointer, N1 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4785,7 +4811,7 @@ func goColorbarExtended(p unsafe.Pointer, N1 int) int {
 }
 
 //export goColorbarSelect
-func goColorbarSelect(p unsafe.Pointer, N1 int, N2 int) int {
+func goColorbarSelect(p unsafe.Pointer, N1 int32, N2 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4803,7 +4829,7 @@ func goColorbarSelect(p unsafe.Pointer, N1 int, N2 int) int {
 }
 
 //export goColorbarSwitch
-func goColorbarSwitch(p unsafe.Pointer, N1 int, N2 int) int {
+func goColorbarSwitch(p unsafe.Pointer, N1 int32, N2 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4821,7 +4847,7 @@ func goColorbarSwitch(p unsafe.Pointer, N1 int, N2 int) int {
 }
 
 //export goColorBrowserChange
-func goColorBrowserChange(p unsafe.Pointer, N1 C.uchar, N2 C.uchar, N3 C.uchar) int {
+func goColorBrowserChange(p unsafe.Pointer, N1 C.uchar, N2 C.uchar, N3 C.uchar) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4839,7 +4865,7 @@ func goColorBrowserChange(p unsafe.Pointer, N1 C.uchar, N2 C.uchar, N3 C.uchar) 
 }
 
 //export goColorBrowserDrag
-func goColorBrowserDrag(p unsafe.Pointer, N1 C.uchar, N2 C.uchar, N3 C.uchar) int {
+func goColorBrowserDrag(p unsafe.Pointer, N1 C.uchar, N2 C.uchar, N3 C.uchar) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4857,7 +4883,7 @@ func goColorBrowserDrag(p unsafe.Pointer, N1 C.uchar, N2 C.uchar, N3 C.uchar) in
 }
 
 //export goDialButtonPress
-func goDialButtonPress(p unsafe.Pointer, N1 float64) int {
+func goDialButtonPress(p unsafe.Pointer, N1 float64) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4875,7 +4901,7 @@ func goDialButtonPress(p unsafe.Pointer, N1 float64) int {
 }
 
 //export goDialButtonRelease
-func goDialButtonRelease(p unsafe.Pointer, N1 float64) int {
+func goDialButtonRelease(p unsafe.Pointer, N1 float64) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4893,7 +4919,7 @@ func goDialButtonRelease(p unsafe.Pointer, N1 float64) int {
 }
 
 //export goDialMouseMove
-func goDialMouseMove(p unsafe.Pointer, N1 float64) int {
+func goDialMouseMove(p unsafe.Pointer, N1 float64) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4911,7 +4937,7 @@ func goDialMouseMove(p unsafe.Pointer, N1 float64) int {
 }
 
 //export goMatrixAction
-func goMatrixAction(p unsafe.Pointer, N1 int, N2 int, N3 int, N4 int, N5 *C.char) int {
+func goMatrixAction(p unsafe.Pointer, N1 int32, N2 int32, N3 int32, N4 int32, N5 *C.char) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4929,7 +4955,7 @@ func goMatrixAction(p unsafe.Pointer, N1 int, N2 int, N3 int, N4 int, N5 *C.char
 }
 
 //export goMatrixClick
-func goMatrixClick(p unsafe.Pointer, N1 int, N2 int, N3 *C.char) int {
+func goMatrixClick(p unsafe.Pointer, N1 int32, N2 int32, N3 *C.char) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4947,7 +4973,7 @@ func goMatrixClick(p unsafe.Pointer, N1 int, N2 int, N3 *C.char) int {
 }
 
 //export goMatrixRelease
-func goMatrixRelease(p unsafe.Pointer, N1 int, N2 int, N3 *C.char) int {
+func goMatrixRelease(p unsafe.Pointer, N1 int32, N2 int32, N3 *C.char) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4965,7 +4991,7 @@ func goMatrixRelease(p unsafe.Pointer, N1 int, N2 int, N3 *C.char) int {
 }
 
 //export goMatrixMouseMove
-func goMatrixMouseMove(p unsafe.Pointer, N1 int, N2 int) int {
+func goMatrixMouseMove(p unsafe.Pointer, N1 int32, N2 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -4983,7 +5009,7 @@ func goMatrixMouseMove(p unsafe.Pointer, N1 int, N2 int) int {
 }
 
 //export goMatrixEnterItem
-func goMatrixEnterItem(p unsafe.Pointer, N1 int, N2 int) int {
+func goMatrixEnterItem(p unsafe.Pointer, N1 int32, N2 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -5001,7 +5027,7 @@ func goMatrixEnterItem(p unsafe.Pointer, N1 int, N2 int) int {
 }
 
 //export goMatrixLeaveItem
-func goMatrixLeaveItem(p unsafe.Pointer, N1 int, N2 int) int {
+func goMatrixLeaveItem(p unsafe.Pointer, N1 int32, N2 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -5019,7 +5045,7 @@ func goMatrixLeaveItem(p unsafe.Pointer, N1 int, N2 int) int {
 }
 
 //export goMatrixScrollTop
-func goMatrixScrollTop(p unsafe.Pointer, N1 int, N2 int) int {
+func goMatrixScrollTop(p unsafe.Pointer, N1 int32, N2 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -5037,7 +5063,7 @@ func goMatrixScrollTop(p unsafe.Pointer, N1 int, N2 int) int {
 }
 
 //export goMatrixBgcolor
-func goMatrixBgcolor(p unsafe.Pointer, N1 int, N2 int, N3 *C.uint, N4 *C.uint, N5 *C.uint) int {
+func goMatrixBgcolor(p unsafe.Pointer, N1 int32, N2 int32, N3 *C.uint, N4 *C.uint, N5 *C.uint) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -5055,7 +5081,7 @@ func goMatrixBgcolor(p unsafe.Pointer, N1 int, N2 int, N3 *C.uint, N4 *C.uint, N
 }
 
 //export goMatrixFgcolor
-func goMatrixFgcolor(p unsafe.Pointer, N1 int, N2 int, N3 *C.uint, N4 *C.uint, N5 *C.uint) int {
+func goMatrixFgcolor(p unsafe.Pointer, N1 int32, N2 int32, N3 *C.uint, N4 *C.uint, N5 *C.uint) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -5073,7 +5099,7 @@ func goMatrixFgcolor(p unsafe.Pointer, N1 int, N2 int, N3 *C.uint, N4 *C.uint, N
 }
 
 //export goMatrixFont
-func goMatrixFont(p unsafe.Pointer, N1 int, N2 int) int {
+func goMatrixFont(p unsafe.Pointer, N1 int32, N2 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -5091,7 +5117,7 @@ func goMatrixFont(p unsafe.Pointer, N1 int, N2 int) int {
 }
 
 //export goMatrixDraw
-func goMatrixDraw(p unsafe.Pointer, N1 int, N2 int, N3 int, N4 int, N5 int, N6 int, N7 unsafe.Pointer) int {
+func goMatrixDraw(p unsafe.Pointer, N1 int32, N2 int32, N3 int32, N4 int32, N5 int32, N6 int32, N7 unsafe.Pointer) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -5109,7 +5135,7 @@ func goMatrixDraw(p unsafe.Pointer, N1 int, N2 int, N3 int, N4 int, N5 int, N6 i
 }
 
 //export goMatrixDropCheck
-func goMatrixDropCheck(p unsafe.Pointer, N1 int, N2 int) int {
+func goMatrixDropCheck(p unsafe.Pointer, N1 int32, N2 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -5127,7 +5153,7 @@ func goMatrixDropCheck(p unsafe.Pointer, N1 int, N2 int) int {
 }
 
 //export goMatrixDrop
-func goMatrixDrop(p unsafe.Pointer, N1 int, N2 int) int {
+func goMatrixDrop(p unsafe.Pointer, N1 int32, N2 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -5145,7 +5171,7 @@ func goMatrixDrop(p unsafe.Pointer, N1 int, N2 int) int {
 }
 
 //export goMatrixDropSelect
-func goMatrixDropSelect(p unsafe.Pointer, N1 int, N2 int, N3 unsafe.Pointer, N4 *C.char, N5 int, N6 int) int {
+func goMatrixDropSelect(p unsafe.Pointer, N1 int32, N2 int32, N3 unsafe.Pointer, N4 *C.char, N5 int32, N6 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -5163,7 +5189,7 @@ func goMatrixDropSelect(p unsafe.Pointer, N1 int, N2 int, N3 unsafe.Pointer, N4 
 }
 
 //export goMatrixEdition
-func goMatrixEdition(p unsafe.Pointer, N1 int, N2 int, N3 int, N4 int) int {
+func goMatrixEdition(p unsafe.Pointer, N1 int32, N2 int32, N3 int32, N4 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -5181,7 +5207,7 @@ func goMatrixEdition(p unsafe.Pointer, N1 int, N2 int, N3 int, N4 int) int {
 }
 
 //export goMatrixValue
-func goMatrixValue(p unsafe.Pointer, N1 int, N2 int) int {
+func goMatrixValue(p unsafe.Pointer, N1 int32, N2 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -5199,7 +5225,7 @@ func goMatrixValue(p unsafe.Pointer, N1 int, N2 int) int {
 }
 
 //export goMatrixValueEdit
-func goMatrixValueEdit(p unsafe.Pointer, N1 int, N2 int, N3 *C.char) int {
+func goMatrixValueEdit(p unsafe.Pointer, N1 int32, N2 int32, N3 *C.char) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -5217,7 +5243,7 @@ func goMatrixValueEdit(p unsafe.Pointer, N1 int, N2 int, N3 *C.char) int {
 }
 
 //export goMatrixMark
-func goMatrixMark(p unsafe.Pointer, N1 int, N2 int) int {
+func goMatrixMark(p unsafe.Pointer, N1 int32, N2 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -5235,7 +5261,7 @@ func goMatrixMark(p unsafe.Pointer, N1 int, N2 int) int {
 }
 
 //export goMatrixMarkEdit
-func goMatrixMarkEdit(p unsafe.Pointer, N1 int, N2 int, N3 int) int {
+func goMatrixMarkEdit(p unsafe.Pointer, N1 int32, N2 int32, N3 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -5253,7 +5279,7 @@ func goMatrixMarkEdit(p unsafe.Pointer, N1 int, N2 int, N3 int) int {
 }
 
 //export goPPlotDelete
-func goPPlotDelete(p unsafe.Pointer, N1 int, N2 int, N3 float32, N4 float32) int {
+func goPPlotDelete(p unsafe.Pointer, N1 int32, N2 int32, N3 float32, N4 float32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -5271,7 +5297,7 @@ func goPPlotDelete(p unsafe.Pointer, N1 int, N2 int, N3 float32, N4 float32) int
 }
 
 //export goPPlotDeleteBegin
-func goPPlotDeleteBegin(p unsafe.Pointer) int {
+func goPPlotDeleteBegin(p unsafe.Pointer) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -5289,7 +5315,7 @@ func goPPlotDeleteBegin(p unsafe.Pointer) int {
 }
 
 //export goPPlotDeleteEnd
-func goPPlotDeleteEnd(p unsafe.Pointer) int {
+func goPPlotDeleteEnd(p unsafe.Pointer) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -5307,7 +5333,7 @@ func goPPlotDeleteEnd(p unsafe.Pointer) int {
 }
 
 //export goPPlotSelect
-func goPPlotSelect(p unsafe.Pointer, N1 int, N2 int, N3 float32, N4 float32, N5 int) int {
+func goPPlotSelect(p unsafe.Pointer, N1 int32, N2 int32, N3 float32, N4 float32, N5 int32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -5325,7 +5351,7 @@ func goPPlotSelect(p unsafe.Pointer, N1 int, N2 int, N3 float32, N4 float32, N5 
 }
 
 //export goPPlotSelectBegin
-func goPPlotSelectBegin(p unsafe.Pointer) int {
+func goPPlotSelectBegin(p unsafe.Pointer) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -5343,7 +5369,7 @@ func goPPlotSelectBegin(p unsafe.Pointer) int {
 }
 
 //export goPPlotSelectEnd
-func goPPlotSelectEnd(p unsafe.Pointer) int {
+func goPPlotSelectEnd(p unsafe.Pointer) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -5361,7 +5387,7 @@ func goPPlotSelectEnd(p unsafe.Pointer) int {
 }
 
 //export goPPlotEdit
-func goPPlotEdit(p unsafe.Pointer, N1 int, N2 int, N3 float32, N4 float32, N5 *float32, N6 *float32) int {
+func goPPlotEdit(p unsafe.Pointer, N1 int32, N2 int32, N3 float32, N4 float32, N5 *float32, N6 *float32) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -5379,7 +5405,7 @@ func goPPlotEdit(p unsafe.Pointer, N1 int, N2 int, N3 float32, N4 float32, N5 *f
 }
 
 //export goPPlotEditBegin
-func goPPlotEditBegin(p unsafe.Pointer) int {
+func goPPlotEditBegin(p unsafe.Pointer) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -5397,7 +5423,7 @@ func goPPlotEditBegin(p unsafe.Pointer) int {
 }
 
 //export goPPlotEditEnd
-func goPPlotEditEnd(p unsafe.Pointer) int {
+func goPPlotEditEnd(p unsafe.Pointer) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -5415,7 +5441,7 @@ func goPPlotEditEnd(p unsafe.Pointer) int {
 }
 
 //export goPPlotPreDraw
-func goPPlotPreDraw(p unsafe.Pointer, N1 unsafe.Pointer) int {
+func goPPlotPreDraw(p unsafe.Pointer, N1 unsafe.Pointer) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -5433,7 +5459,7 @@ func goPPlotPreDraw(p unsafe.Pointer, N1 unsafe.Pointer) int {
 }
 
 //export goPPlotPostDraw
-func goPPlotPostDraw(p unsafe.Pointer, N1 unsafe.Pointer) int {
+func goPPlotPostDraw(p unsafe.Pointer, N1 unsafe.Pointer) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -5451,7 +5477,7 @@ func goPPlotPostDraw(p unsafe.Pointer, N1 unsafe.Pointer) int {
 }
 
 //export goWebBrowserCompleted
-func goWebBrowserCompleted(p unsafe.Pointer, N1 *C.char) int {
+func goWebBrowserCompleted(p unsafe.Pointer, N1 *C.char) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -5469,7 +5495,7 @@ func goWebBrowserCompleted(p unsafe.Pointer, N1 *C.char) int {
 }
 
 //export goWebBrowserError
-func goWebBrowserError(p unsafe.Pointer, N1 *C.char) int {
+func goWebBrowserError(p unsafe.Pointer, N1 *C.char) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -5487,7 +5513,7 @@ func goWebBrowserError(p unsafe.Pointer, N1 *C.char) int {
 }
 
 //export goWebBrowserNavigate
-func goWebBrowserNavigate(p unsafe.Pointer, N1 *C.char) int {
+func goWebBrowserNavigate(p unsafe.Pointer, N1 *C.char) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
@@ -5505,7 +5531,7 @@ func goWebBrowserNavigate(p unsafe.Pointer, N1 *C.char) int {
 }
 
 //export goWebBrowserNewWindow
-func goWebBrowserNewWindow(p unsafe.Pointer, N1 *C.char) int {
+func goWebBrowserNewWindow(p unsafe.Pointer, N1 *C.char) int32 {
 	ih := ptoHandle(p)
 	if ih == nil {
 		return DEFAULT
