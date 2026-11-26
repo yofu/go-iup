@@ -7,6 +7,23 @@ package iup
 /*
 #include <stdlib.h>
 #include <iup.h>
+
+static int iupGetTextCompat(const char* title, char* text, int maxsize) {
+#if IUP_VERSION_NUMBER >= 317000
+	return IupGetText(title, text, maxsize);
+#else
+	(void)maxsize;
+	return IupGetText(title, text);
+#endif
+}
+
+static Ihandle* iupElementPropertiesDialogCompat(Ihandle* elem) {
+#if IUP_VERSION_NUMBER >= 328000
+	return IupElementPropertiesDialog(NULL, elem);
+#else
+	return IupElementPropertiesDialog(elem);
+#endif
+}
 */
 import "C"
 import (
@@ -175,7 +192,7 @@ func LayoutDialog(h IHandle) IHandle {
 }
 
 func ElementPropertiesDialog(h IHandle) IHandle {
-	return toHandle(C.IupElementPropertiesDialog(toNative(h)))
+	return toHandle(C.iupElementPropertiesDialogCompat(toNative(h)))
 }
 
 func Image(width, height int, pixels []byte) IHandle {
@@ -195,7 +212,7 @@ func GetText(title string, data string) (string, bool) {
 	defer FreeCS(t)
 	d := NewCSN(data, 4096)
 	defer FreeCS(d)
-	r := C.IupGetText(t, d)
+	r := C.iupGetTextCompat(t, d, 4096)
 	return FromCS(d), r != 0
 }
 

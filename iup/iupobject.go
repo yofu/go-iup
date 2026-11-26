@@ -10,52 +10,142 @@ package iup
 /*
 #include <stdlib.h>
 #include <iup.h>
+#include <iupdef.h>
 #define GOIUP "_GOIUP_"
 
 // IUP definitions not defined
+#ifndef IUP_DEFAULT_ACTION
+#define IUP_DEFAULT_ACTION  "DEFAULT_ACTION"
+#endif
+#ifndef IUP_UNMAP_CB
 #define IUP_UNMAP_CB        "UNMAP_CB"
+#endif
+#ifndef IUP_DESTROY_CB
 #define IUP_DESTROY_CB      "DESTROY_CB"
+#endif
+#ifndef IUP_CARET_CB
 #define IUP_CARET_CB        "CARET_CB"
+#endif
+#ifndef IUP_DBLCLICK_CB
 #define IUP_DBLCLICK_CB     "DBLCLICK_CB"
+#endif
+#ifndef IUP_EDIT_CB
 #define IUP_EDIT_CB         "EDIT_CB"
+#endif
+#ifndef IUP_MULTISELECT_CB
 #define IUP_MULTISELECT_CB  "MULTISELECT_CB"
+#endif
+#ifndef IUP_VALUECHANGED_CB
 #define IUP_VALUECHANGED_CB "VALUECHANGED_CB"
+#endif
+#ifndef IUP_TABCHANGE_CB
 #define IUP_TABCHANGE_CB    "TABCHANGE_CB"
+#endif
+#ifndef IUP_TABCHANGEPOS_CB
 #define IUP_TABCHANGEPOS_CB "TABCHANGEPOS_CB"
+#endif
+#ifndef IUP_SPIN_CB
 #define IUP_SPIN_CB         "SPIN_CB"
+#endif
+#ifndef IUP_FILE_CB
 #define IUP_FILE_CB			"FILE_CB"
+#endif
+#ifndef IUP_FOCUS_CB
 #define IUP_FOCUS_CB		"FOCUS_CB"
+#endif
+#ifndef IUP_TOUCH_CB
 #define IUP_TOUCH_CB		"TOUCH_CB"
+#endif
+#ifndef IUP_MULTITOUCH_CB
 #define IUP_MULTITOUCH_CB	"MULTITOUCH_CB"
+#endif
+#ifndef IUP_DROPDOWN_CB
 #define IUP_DROPDOWN_CB		"DROPDOWN_CB"
+#endif
+#ifndef IUP_MULTISELECTION_CB
 #define IUP_MULTISELECTION_CB "MULTISELECTION_CB"
+#endif
+#ifndef IUP_SHOWRENAME_CB
 #define IUP_SHOWRENAME_CB	"SHOWRENAME_CB"
+#endif
+#ifndef IUP_RENAME_CB
 #define IUP_RENAME_CB		"RENAME_CB"
+#endif
+#ifndef IUP_DRAGDROP_CB
 #define IUP_DRAGDROP_CB		"DRAGDROP_CB"
+#endif
+#ifndef IUP_NODEREMOVED_CB
 #define IUP_NODEREMOVED_CB	"NODEREMOVED_CB"
+#endif
+#ifndef IUP_BUTTON_PRESS_CB
 #define IUP_BUTTON_PRESS_CB	"BUTTON_PRESS_CB"
+#endif
+#ifndef IUP_BUTTON_RELEASE_CB
 #define IUP_BUTTON_RELEASE_CB "BUTTON_RELEASE_CB"
+#endif
+#ifndef IUP_ACTION_CB
 #define IUP_ACTION_CB		"ACTION_CB"
+#endif
+#ifndef IUP_RELEASE_CB
 #define IUP_RELEASE_CB		"RELEASE_CB"
+#endif
+#ifndef IUP_SCROLLTOP_CB
 #define IUP_SCROLLTOP_CB	"SCROLLTOP_CB"
+#endif
+#ifndef IUP_BGCOLOR_CB
 #define IUP_BGCOLOR_CB		"BGCOLOR_CB"
+#endif
+#ifndef IUP_FGCOLOR_CB
 #define IUP_FGCOLOR_CB		"FGCOLOR_CB"
+#endif
+#ifndef IUP_FONT_CB
 #define IUP_FONT_CB			"FONT_CB"
+#endif
+#ifndef IUP_MARK_CB
 #define IUP_MARK_CB			"MARK_CB"
+#endif
+#ifndef IUP_MARKEDIT_CB
 #define IUP_MARKEDIT_CB		"MARKEDIT_CB"
+#endif
+#ifndef IUP_DELETE_CB
 #define IUP_DELETE_CB		"DELETE_CB"
+#endif
+#ifndef IUP_DELETEBEGIN_CB
 #define IUP_DELETEBEGIN_CB	"DELETEBEGIN_CB"
+#endif
+#ifndef IUP_DELETEEND_CB
 #define IUP_DELETEEND_CB	"DELETEEND_CB"
+#endif
+#ifndef IUP_SELECTBEGIN_CB
 #define IUP_SELECTBEGIN_CB	"SELECTBEGIN_CB"
+#endif
+#ifndef IUP_SELECTEND_CB
 #define IUP_SELECTEND_CB	"SELECTEND_CB"
+#endif
+#ifndef IUP_EDITBEGIN_CB
 #define IUP_EDITBEGIN_CB	"EDITBEGIN_CB"
+#endif
+#ifndef IUP_EDITEND_CB
 #define	IUP_EDITEND_CB		"EDITEND_CB"
+#endif
+#ifndef IUP_PREDRAW_CB
 #define IUP_PREDRAW_CB		"PREDRAW_CB"
+#endif
+#ifndef IUP_POSTDRAW_CB
 #define IUP_POSTDRAW_CB		"POSTDRAW_CB"
+#endif
+#ifndef IUP_COMPLETED_CB
 #define IUP_COMPLETED_CB	"COMPLETED_CB"
+#endif
+#ifndef IUP_ERROR_CB
 #define IUP_ERROR_CB		"ERROR_CB"
+#endif
+#ifndef IUP_NAVIGATE_CB
 #define IUP_NAVIGATE_CB		"NAVIGATE_CB"
+#endif
+#ifndef IUP_NEWWINDOW_CB
 #define IUP_NEWWINDOW_CB	"NEWWINDOW_CB"
+#endif
 
 extern int goCommonDefaultAction(void*);
 static void iupSetCommonDefaultAction(Ihandle* ih)
